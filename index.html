@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Hope</h2>
+    <audio controls id="myaudio">
+        <!-- <source src="sample.wav" type="audio/mpeg"> -->
+        <source src="http://localhost:3001/audio/sample.wav" type="audio/mpeg">
+      Your browser does not support the audio element.
+      </audio>
+      <div>
+          <h3>Playback</h3>
+      </div>
+      <div>
+          <button onclick="start()">Start</button>
+          <button onclick="pause()">Pause</button>
+          <button onclick="stop()">Stop</button>
+          <button onclick="prev()">&lt;-</button>
+          <button onclick="next()">-&gt;</button>
+          <select  id="level">
+              <option value="1">Level 1</option>
+              <option value="2">Level 2</option>
+          </select>
+          <label for="repeat">Wait for repeat </label><input id="repeatFor" type="text" size="2" value="1"/>
+      </div>
+      <hr>
+      <div>
+        <h3>Teacher mode</h3>
+        <audio id="tracherAudio"></audio>
+        <input type="file" id="filepick" onchange="loadFile(this)">
+        <button disabled id="samplePoints" onclick="samplePoints()">set points</button>
+        <label for="speed">Playback speed </label><input type="text" value="1" size="2" id="learnSpeed"/>
+        <div class='sampleResult'>
+
+        </div>
+    </div>
+    <script type="text/javascript" src="learnpoints.js"></script>
+    <script type="text/javascript" src="student.js"></script>
+    <script type="text/javascript" src="teacher.js"></script>
+</body>
+</html>
