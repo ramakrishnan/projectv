@@ -1,5 +1,5 @@
 var a = document.querySelector('#myaudio');
-var speed;
+var level;
 var repeatFor;
 var manualPause = false;
 var currentLearningPoints;
@@ -58,13 +58,15 @@ var stop = () => {
     a.currentTime = 0;
 };
 
+var playbackRate = 1;
 var start = () => {
     currentPoint = 0;
     a.currentTime = 0;
-    speed = Number(document.querySelector('#level').value);
+    level = Number(document.querySelector('#level').value);
     repeatFor = Number(document.querySelector('#repeatFor').value);
-    a.playbackRate = speed;
-    currentLearningPoints = learningPoints[`step${speed}`];
+    playbackRate = 1;
+    a.playbackRate = playbackRate;
+    currentLearningPoints = samplePointsArr; // learningPoints[`step${level}`];
     startPlaying();
 }
 var startPlaying = () => {
@@ -73,7 +75,7 @@ var startPlaying = () => {
     }
     if (currentPoint < currentLearningPoints.length) {
         var section = currentLearningPoints[currentPoint +1] - currentLearningPoints[currentPoint];
-        section = Number(((section * 1000) / speed).toFixed());
+        section = Number(((section * 1000) / playbackRate).toFixed());
         currentPoint++;
         console.log('bump', currentPoint);
         canRewind = false;
